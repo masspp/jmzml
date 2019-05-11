@@ -88,6 +88,8 @@ public class BinaryDataArray
     public static final String MS_INTENSITY_NAME = "intensity array";
     public static final String MS_MZ_VALUE_AC = "MS:1000514";
     public static final String MS_MZ_VALUE_NAME = "m/z array";
+    public static final String MS_CHARGE_AC = "MS:1000516";
+    public static final String MS_CHARGE_NAME = "charge array";
     public static final String MS_COMPRESSED_AC = "MS:1000574";
     public static final String MS_COMPRESSED_NAME = "zlib compression";
     public static final String MS_UNCOMPRESSED_AC = "MS:1000576";
@@ -158,7 +160,12 @@ public class BinaryDataArray
          * Used if no other DataType could be determined.
          * Possible reasons: other data encoded, other vocabulary terms used, data not present, ...
          */
-        UNKNOWN
+        UNKNOWN,
+        
+         /**
+         * Based on the constant MS_CHARGE_AC to define the charge related to the m/z values of a spectrum.
+         */
+        CHARGE,
 
     }
 
@@ -736,7 +743,9 @@ public class BinaryDataArray
                 return DataType.MZ_VALUES;
             } else if (param.getAccession().equals(MS_INTENSITY_AC)) {
                 return DataType.INTENSITY;
-            } // else go on to the next cv param
+            } else if (param.getAccession().equals(MS_CHARGE_AC)){
+                return DataType.CHARGE;
+            }  // else go on to the next cv param
         }
         // if we haven't found a recognised DataType yet, we can't say what the data represents
         return DataType.UNKNOWN;

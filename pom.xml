@@ -99,7 +99,6 @@
             <type>pom</type>
         </dependency>
 
-        <!-- Customized libraries needed in jmzML -->
 
         <dependency>
             <groupId>commons-collections</groupId>
@@ -266,6 +265,14 @@
             <id>JBoss</id>
             <name>JBoss repository</name>
             <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+        
+        
+                <!-- EBI repo -->
+        <repository>
+            <id>nexus-ebi-release-repo</id>
+            <name>EBI repository</name>
+            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
         </repository>
     </repositories>
 
